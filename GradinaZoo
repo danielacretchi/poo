@@ -1,0 +1,81 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Clasa de bază - Animal
+class Animal
+{
+protected:
+    string nume;
+    int varsta;
+    string mancare;
+    float kilograme;
+    string culoare;
+public:
+    Animal(string nume, int varsta, string mancare, float kilograme, string culoare)
+    {
+        this->nume = nume;
+        this->varsta = varsta;
+        this->mancare = mancare;
+        this->kilograme = kilograme;
+        this->culoare = culoare;
+    }
+
+    void afiseazaInformatii()
+    {
+        cout << "Animal: " << nume << ", Varsta: " << varsta<< " ani, Mananca: " << mancare << ", Kilograme: "<< kilograme << " kg, Culoare: " << culoare << endl;
+    }
+};
+
+// Clasa derivată - Mamifer
+class Mamifer : public Animal
+{
+private:
+    string tipBlana;
+public:
+    Mamifer(string nume, int varsta, string mancare, float kilograme, string culoare, string tipBlana): Animal(nume, varsta, mancare, kilograme, culoare)
+    {
+        this->tipBlana = tipBlana;
+    }
+
+    void afiseazaInformatii()
+    {
+        cout << "Mamifer: " << nume << ", Varsta: " << varsta<< " ani, Tip blana: " << tipBlana << ", Mananca: " << mancare << ", Kilograme: " << kilograme<< " kg, Culoare: " << culoare << endl;
+    }
+};
+
+// Clasa derivată - Pasare
+class Pasare : public Animal
+{
+private:
+    float anverguraAripi;
+public:
+    Pasare(string nume, int varsta, string mancare, float kilograme, string culoare, float anvergura): Animal(nume, varsta, mancare, kilograme, culoare)
+    {
+        this->anverguraAripi = anvergura;
+    }
+
+    void afiseazaInformatii()
+    {
+        cout << "Pasare: " << nume << ", Varsta: " << varsta<< " ani, Anvergura aripi: " << anverguraAripi << " m, Mananca: "<< mancare << ", Kilograme: " << kilograme<< " kg, Culoare: " << culoare << endl;
+    }
+};
+
+int main()
+{
+    // Creăm și afișăm 5 animale diferite
+    Mamifer leu("Leu", 5, "Carne", 190.5, "Auriu", "Scurta");
+    Mamifer elefant("Elefant", 10, "Plante", 5000.0, "Gri", "Grosiera");
+    Pasare vultur("Vultur", 3, "Carne", 7.8, "Maron", 2.5);
+    Pasare papagal("Papagal", 2, "Fructe", 0.5, "Verde", 0.6);
+    Mamifer tigru("Tigru", 6, "Carne", 220.0, "Portocaliu cu dungi negre", "Densa");
+
+    // Afișăm informațiile despre fiecare animal
+    leu.afiseazaInformatii();
+    elefant.afiseazaInformatii();
+    vultur.afiseazaInformatii();
+    papagal.afiseazaInformatii();
+    tigru.afiseazaInformatii();
+
+    return 0;
+}
